@@ -1,15 +1,18 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import style from './Login.module.css'
 import { useFormik } from 'formik'
 import axios from 'axios'
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom'
+import { tokenContext } from '../../Context/tokenContext'
 
 
 export default function Login() {
    const [isLoading, setLoading] = useState(false)
   const [apiError, setApiError] = useState("")
   let Navigate = useNavigate()
+
+  let { setToken } = useContext(tokenContext);
 
   function login(values) { //send to backend and batabase 
     console.log(values);
@@ -18,6 +21,8 @@ export default function Login() {
       console.log(data);
       if (data.data.message == "welcome") {
         setLoading(false);
+        localStorage.setItem("userToken",data.data.token)
+        setToken(data.data.token);
         Navigate('/profile')
       }
     }).catch((err)=> {
@@ -70,3 +75,6 @@ export default function Login() {
       
     </div>  )
 }
+
+
+//token نستخدم التوكين من الكونتكست لما يعمل لوج ان احطه في اللوكال واخلي setToken بتساوي التوكين عشان اي لوج ان جديد ياخد التوكين الجديد

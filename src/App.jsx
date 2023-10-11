@@ -24,12 +24,12 @@ function App() {
   }])
 
 
-   let {setToken}= useContext(tokenContext);
-useEffect(()=>{
-  if(localStorage.getItem("userToken")){
-    setToken(localStorage.getItem("userToken"))
-  }
-}, [])
+  let {setToken}= useContext(tokenContext);
+  useEffect(()=>{
+    if(localStorage.getItem("userToken")){
+      setToken(localStorage.getItem("userToken"))
+    }
+  }, [])
   
   return (
     <>
