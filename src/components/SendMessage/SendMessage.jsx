@@ -1,5 +1,5 @@
 import React from 'react'
-import style from './SendMessage.module.css'
+// import style from './SendMessage.module.css'
 import { useParams } from 'react-router-dom'
 import avatarImg from "../../images/avatar.png";
 import { useFormik } from "formik";
@@ -7,14 +7,14 @@ import axios from "axios";
 
 export default function SendMessage() {
   let userId = useParams(); 
-  console.log(userId);
 
   async function addMessage(values) {
     let data = {
       ...values,
-      receivedId: userId,
+      receivedId: userId.id,
     };
-    let { addedMessages } = await axios.post("https://sara7aiti.onrender.com/api/v1/message",data);
+    let { addedMessages } = await axios.post("https://sara7aiti.onrender.com/api/v1/message", data);
+    console.log(addedMessages);
   }
 
   let formik = useFormik({
@@ -31,7 +31,7 @@ export default function SendMessage() {
     <>
       <div className="container text-center py-2 my-5 text-center">
         <div className="card py-5 mb-5">
-          <a data-toggle="modal" data-target="#profile">
+          <a data-target="#profile">
             <img src={avatarImg} className="avatar" style={{width:'60px'}} />
           </a>
           <div className="container w-50 m-auto">

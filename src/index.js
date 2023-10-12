@@ -22,6 +22,6 @@ root.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-//packages used 1- formik / yup for validation  2- axios for api 
+//packages used 1- formik / yup for validation  2- axios / react-query for api 
 //npm i jwt-decode
 reportWebVitals();
