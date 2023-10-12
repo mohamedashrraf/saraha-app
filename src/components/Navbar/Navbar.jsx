@@ -1,13 +1,11 @@
 // import React, { useContext } from 'react'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import style from './Navbar.module.css'
-// import { CounterContext } from '../../Context/counter'
 import { tokenContext } from '../../Context/tokenContext'
 import { useContext } from 'react';
 
 
 export default function Navbar() {
-  // let {counter} = useContext(CounterContext)
   let { token } = useContext(tokenContext);
   let navigate = useNavigate()
   let { setToken } = useContext(tokenContext);

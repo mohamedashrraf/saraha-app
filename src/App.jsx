@@ -7,6 +7,8 @@ import Profile from './components/Profile/Profile'
 import Notfound from './components/Notfound/Notfound'
 import { useContext,useEffect } from 'react';
 import { tokenContext } from './Context/tokenContext';
+import ProtectedRoutes from './components/ProtectedRoutes/ProtectedRoutes';
+import SendMessage from './components/SendMessage/SendMessage';
 
 
 function App() {
@@ -16,10 +18,10 @@ function App() {
     path: "", element: <Layout />, children: [
       { path: "register", element: <Register /> },
       { path: "login", element: <Login /> },
-      { path: "profile", element: <Profile /> },
+      { path: "profile", element: <ProtectedRoutes> <Profile /></ProtectedRoutes> },
+      { path: "sendmessage/:userId", element:<SendMessage /> },
       { path: "*", element: <Notfound /> },
 
-      
     ]
   }])
 
