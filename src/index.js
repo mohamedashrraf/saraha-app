@@ -7,13 +7,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import TokenContextProvider from './Context/tokenContext';
+import { Provider } from 'react-redux';
+import store from './Redux/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <TokenContextProvider>
-      <App />
-    </TokenContextProvider>
+    <Provider store={store}>
+      <TokenContextProvider>
+        <App />
+      </TokenContextProvider>
+    </Provider>
    
   </React.StrictMode>
 );
@@ -24,4 +28,5 @@ root.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 //packages used 1- formik / yup for validation  2- axios / react-query for api 
 //npm i jwt-decode
+//npm install @reduxjs/toolkit      -    npm install react-redux
 reportWebVitals();
