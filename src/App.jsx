@@ -19,7 +19,7 @@ function App() {
       { path: "register", element: <Register /> },
       { path: "login", element: <Login /> },
       { path: "profile", element: <ProtectedRoutes> <Profile /></ProtectedRoutes> },
-      { path: "sendmessage/:userId", element:<SendMessage /> },
+      { path: "message/:userId", element:<SendMessage /> },
       { path: "*", element: <Notfound /> },
 
     ]

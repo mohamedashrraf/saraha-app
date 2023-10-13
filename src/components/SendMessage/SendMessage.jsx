@@ -11,10 +11,16 @@ export default function SendMessage() {
   async function addMessage(values) {
     let data = {
       ...values,
-      receivedId: userId.id,
+      receivedId: userId.userId
     };
-    let { addedMessages } = await axios.post("https://sara7aiti.onrender.com/api/v1/message", data);
-    console.log(addedMessages);
+    console.log(data);
+    try {
+  let addedMessages = await axios.post("https://sara7aiti.onrender.com/api/v1/message", data);
+  console.log(addedMessages);
+} catch (error) {
+  console.error("Error:", error.response.data);
+}
+
   }
 
   let formik = useFormik({

@@ -59,7 +59,7 @@ export default function Profile() {
           <img src={img} alt="User Avatar" className="avatar w-25" />
         </a>
         <h3 className="py-2">{userName}</h3>
-        <Link to={'/sendmessage/'+ userId} className="w-25 mx-auto text-center btn btn-outline-dark rounded-pill" variant="primary">
+        <Link to={'/message/'+ userId} className="w-25 mx-auto text-center btn btn-outline-dark rounded-pill" variant="primary">
           <i className="fas fa-share-alt" /> Share Profile
         </Link>
       </div>
