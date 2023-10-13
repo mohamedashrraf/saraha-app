@@ -1,37 +1,43 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 // import style from './SendMessage.module.css'
 import { useParams } from 'react-router-dom'
 import avatarImg from "../../images/avatar.png";
 import { useFormik } from "formik";
 import axios from "axios";
+import { useDispatch, useSelector } from 'react-redux';
+import { addMessage } from '../../Redux/messagesSlice'
 
 export default function SendMessage() {
-  let userId = useParams(); 
+  let {userId} = useParams(); 
+  const messages = useSelector((state) => state.message);
+  let dispatch = useDispatch();
 
-  async function addMessage(values) {
-    let data = {
-      ...values,
-      receivedId: userId.userId
-    };
-    console.log(data);
-    try {
-  let addedMessages = await axios.post("https://sara7aiti.onrender.com/api/v1/message", data);
-  console.log(addedMessages);
-} catch (error) {
-  console.error("Error:", error.response.data);
-}
+//   async function addMessage(values) {   //use context
+//     let data = {
+//       ...values,
+//       receivedId: userId.userId
+//     };
+//     console.log(data);
+//     try {
+//   let addedMessages = await axios.post("https://sara7aiti.onrender.com/api/v1/message", data);
+//   console.log(addedMessages);
+// } catch (error) {
+//   console.error("Error:", error.response.data);
+// }
 
-  }
+//   }
 
   let formik = useFormik({
     initialValues: {
       messageContent: "",
     },
     onSubmit: (values) => {
-      addMessage(values);
+      // addMessage(values);
+      dispatch(addMessage({ messageContent: values.messageContent, receivedId: userId }));  //use redux
+      console.log(values)
     },
   })
-
+  
 
   return (
     <>

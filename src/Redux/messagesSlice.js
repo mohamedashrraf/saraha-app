@@ -10,6 +10,11 @@ export let getMessages = createAsyncThunk("message/getMessages", async () => {le
     return data.allMessages;
 });
 
+export let addMessage = createAsyncThunk("message/addMessage",async ({ messageContent, receivedId }) => {
+        const { res } = await axios.post("https://sara7aiti.onrender.com/api/v1/message", { messageContent, receivedId });
+        return res.data;
+    }
+);
 
 const messageSlice = createSlice({
     name: "message",
@@ -19,6 +24,9 @@ const messageSlice = createSlice({
             state.message = action.payload;
         });
 
+        builder.addCase(addMessage.fulfilled, (state, action) => {
+            state.setMessage = action.payload;
+        });
     },
 });
 

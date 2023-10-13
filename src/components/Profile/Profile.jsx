@@ -18,7 +18,7 @@ export default function Profile() {
   const [userId, setUserId] = useState("");
 
   let { counter } = useSelector((state) => state.counterRed);
-  // const messages = useSelector((state) => state.message); //using redux
+  // const {messages} = useSelector((state) => state.message); //using redux
   let dispatch = useDispatch();
   
 
